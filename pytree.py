@@ -30,7 +30,19 @@ def main():
             # print out directory and sub-directory contents
             tree(INPUT_DIR)
     print('')
-    print(count_dict['dir_count'], "directories,", count_dict['file_count'], "files")
+    # check for pluralization
+    if count_dict['dir_count']!=1:
+        if count_dict['file_count']!=1:
+            print(count_dict['dir_count'], "directories,", count_dict['file_count'], "files")
+        else:
+            print(count_dict['dir_count'], "directories,", count_dict['file_count'], "file")
+    else:
+        if count_dict['file_count']!=1:
+            print(count_dict['dir_count'], "directory,", count_dict['file_count'], "files")
+        else:
+            print(count_dict['dir_count'], "directory,", count_dict['file_count'], "file")
+
+
 
 def tree(input_dir):
     (path, input_dir_name) = os.path.split(input_dir)
