@@ -19,6 +19,7 @@ def main():
         print(".")
         tree(os.getcwd())
         # print("current directory tree")
+    # otherwise, if there is an argument
     else:
         INPUT_DIR = argv[1]
         # check if directory exists
@@ -27,7 +28,7 @@ def main():
         else:
             # print directory name
             print(INPUT_DIR)
-            # print out directory and sub-directory contents
+            # call tree function
             tree(INPUT_DIR)
     print('')
     # check for pluralization
@@ -41,7 +42,6 @@ def main():
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "files")
         else:
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "file")
-
 
 
 def tree(input_dir):
@@ -64,6 +64,7 @@ def tree(input_dir):
                 dir_name.remove(d)
         # add contents and sort
         contents = sub_dirs+files
+        # contents = sorted(contents, key=lambda x: x.strip('_').lower()
         contents.sort()
         # folder_dict.update((rootname, contents) for c in contents)
         for c in contents:
