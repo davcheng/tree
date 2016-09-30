@@ -43,6 +43,7 @@ def main():
         else:
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "file")
 
+
 def tree(input_dir):
     (path, input_dir_name) = os.path.split(input_dir)
     if input_dir_name == '':
@@ -74,6 +75,7 @@ def tree(input_dir):
     # print(folder_dict[input_dir_name])
     print_files(input_dir_name, folder_dict, 0, 0)
 
+
 def print_files(root_name, dict, indent_count, indent_of_indent_count):
     # the root node should be in the dictionary
     # print(root_name, dict)
@@ -89,7 +91,7 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
                 if(a == dict[root_name][-1]):
                     print('`--', a)
                     indent_of_indent_count += 1  # not sure
-                    indent_count = 0 # not sure
+                    indent_count = 0  # not sure
                 else:
                     # indent_padding(indent_of_indent_count, indent_count)
                     # indent_padding(0, 1)
@@ -110,6 +112,7 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
                 # for b in dict[a]:
                 #     print('yooo', b)
         indent_count = 0
+
 
 def indent_padding(begin_index, count):
     # need to account for parent indent level (that is the starting base)
