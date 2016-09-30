@@ -13,6 +13,7 @@ folder_dict = {}
 indent_count = 0
 indent_of_indent_count = 0
 
+
 def main():
     # check if there are no arguments
     if len(sys.argv) == 1:
