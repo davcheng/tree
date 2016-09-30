@@ -8,7 +8,7 @@ import os
 from os import path
 import re
 
-count_dict = {'dir_count': 0, 'file_count':0}
+count_dict = {'dir_count': 0, 'file_count': 0}
 folder_dict = {}
 indent_count = 0
 indent_of_indent_count = 0
@@ -43,7 +43,6 @@ def main():
         else:
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "file")
 
-
 def tree(input_dir):
     (path, input_dir_name) = os.path.split(input_dir)
     if input_dir_name == '':
@@ -63,7 +62,7 @@ def tree(input_dir):
                 # sub_dirs.remove(f)
                 dir_name.remove(d)
         # add contents and sort
-        contents = sub_dirs+files
+        contents = sub_dirs + files
         # contents = sorted(contents, key=lambda x: x.strip('_').lower()
         contents.sort()
         # folder_dict.update((rootname, contents) for c in contents)
@@ -75,7 +74,6 @@ def tree(input_dir):
     # print(folder_dict[input_dir_name])
     print_files(input_dir_name, folder_dict, 0, 0)
 
-
 def print_files(root_name, dict, indent_count, indent_of_indent_count):
     # the root node should be in the dictionary
     # print(root_name, dict)
@@ -84,14 +82,14 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
         for a in dict[root_name]:
             # check if file by seeing if there is a corresponding key with values (sub-sub-directories/files)
             if a not in dict:
-                count_dict['file_count']+=1
+                count_dict['file_count'] += 1
                 indent_padding(indent_of_indent_count, indent_count)
 
                 # check to see if it is the last item
-                if(a==dict[root_name][-1]):
+                if(a == dict[root_name][-1]):
                     print('`--', a)
-                    indent_of_indent_count+=1 #not sure
-                    indent_count=0 # not sure
+                    indent_of_indent_count += 1 # not sure
+                    indent_count = 0 # not sure
                 else:
                     # indent_padding(indent_of_indent_count, indent_count)
                     # indent_padding(0, 1)
@@ -99,16 +97,16 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
 
             # else it's a sub-directory
             elif a in dict:
-                if(a==dict[root_name][-1]):
+                if(a == dict[root_name][-1]):
                     indent_padding(indent_of_indent_count, indent_count)
                     print('`--', a)
-                    indent_of_indent_count+=1
-                    indent_count=0#not sure
+                    indent_of_indent_count += 1
+                    indent_count = 0 # not sure
                 else:
                     indent_padding(indent_of_indent_count, indent_count)
                     print('|--', a)
-                count_dict['dir_count']+=1
-                print_files(a, dict, indent_count+1, indent_of_indent_count)
+                count_dict['dir_count'] += 1
+                print_files(a, dict, indent_count + 1, indent_of_indent_count)
                 # for b in dict[a]:
                 #     print('yooo', b)
         indent_count = 0
@@ -116,9 +114,9 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
 def indent_padding(begin_index, count):
     # need to account for parent indent level (that is the starting base)
     for i in range(begin_index):
-        print('    ',end='')
+        print('    ', end = '')
     for i in range(count-begin_index):
-        print('|   ',end='')
+        print('|   ', end = '')
 
 if __name__ == '__main__':
     # just for demo
