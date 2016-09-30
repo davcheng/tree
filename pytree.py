@@ -35,7 +35,6 @@ def tree(input_dir):
     (path, input_dir_name) = os.path.split(input_dir)
     if input_dir_name == '':
         (path, input_dir_name) = os.path.split(path)
-    print(input_dir_name)
     for dir_name, sub_dirs, files in os.walk(input_dir):
         # remove later, this is duplicate from print directory name above
         contents = sub_dirs+files
@@ -61,7 +60,12 @@ def print_files(root_name, dict, indent_count):
                 count_dict['file_count']+=1
                 indent_padding(indent_count)
                 indent_count = 0
-                print('`--', a)
+                # check to see if it is the last item
+                if(a==dict[root_name][-1]):
+                    print('`--', a)
+                else:
+                    print('|--', a)
+
             # else it's a sub-directory
             elif a in dict:
                 indent_padding(indent_count)
