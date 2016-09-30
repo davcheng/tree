@@ -46,9 +46,7 @@ def main():
 
 
 def tree(input_dir):
-    (path, input_dir_name) = os.path.split(input_dir)
-    if input_dir_name == '':
-        (path, input_dir_name) = os.path.split(path)
+    input_dir_name = get_input_dir_name(input_dir)
     for dir_name, sub_dirs, files in os.walk(input_dir):
         # remove hidden folders
         for f in files[:]:
@@ -114,6 +112,12 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
                 #     print('yooo', b)
         indent_count = 0
 
+
+def get_input_dir_name(input_dir):
+    (path, input_dir_name) = os.path.split(input_dir)
+    while(input_dir_name == ''):
+        (path, input_dir_name) = os.path.split(path)
+    return input_dir_name
 
 def indent_padding(begin_index, count):
     # need to account for parent indent level (that is the starting base)
