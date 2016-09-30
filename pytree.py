@@ -6,6 +6,7 @@ import sys
 from sys import argv
 import os
 from os import path
+import re
 
 count_dict = {'dir_count': 0, 'file_count':0}
 folder_dict = {}
@@ -36,7 +37,20 @@ def tree(input_dir):
     if input_dir_name == '':
         (path, input_dir_name) = os.path.split(path)
     for dir_name, sub_dirs, files in os.walk(input_dir):
-        # remove later, this is duplicate from print directory name above
+        # remove hidden folders
+        for f in files[:]:
+            if f.startswith('.'):
+                # sub_dirs.remove(f)
+                files.remove(f)
+        for s in sub_dirs[:]:
+            if s.startswith('.'):
+                # sub_dirs.remove(f)
+                sub_dirs.remove(s)
+        for d in dir_name[:]:
+            if d.startswith('.'):
+                # sub_dirs.remove(f)
+                dir_name.remove(d)
+        # add contents and sort
         contents = sub_dirs+files
         contents.sort()
         # folder_dict.update((rootname, contents) for c in contents)
