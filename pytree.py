@@ -32,13 +32,13 @@ def main():
             tree(INPUT_DIR)
     print('')
     # check for pluralization
-    if count_dict['dir_count']!=1:
-        if count_dict['file_count']!=1:
+    if count_dict['dir_count'] != 1:
+        if count_dict['file_count'] != 1:
             print(count_dict['dir_count'], "directories,", count_dict['file_count'], "files")
         else:
             print(count_dict['dir_count'], "directories,", count_dict['file_count'], "file")
     else:
-        if count_dict['file_count']!=1:
+        if count_dict['file_count'] != 1:
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "files")
         else:
             print(count_dict['dir_count'], "directory,", count_dict['file_count'], "file")
@@ -88,7 +88,7 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
                 # check to see if it is the last item
                 if(a == dict[root_name][-1]):
                     print('`--', a)
-                    indent_of_indent_count += 1 # not sure
+                    indent_of_indent_count += 1  # not sure
                     indent_count = 0 # not sure
                 else:
                     # indent_padding(indent_of_indent_count, indent_count)
@@ -101,7 +101,7 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
                     indent_padding(indent_of_indent_count, indent_count)
                     print('`--', a)
                     indent_of_indent_count += 1
-                    indent_count = 0 # not sure
+                    indent_count = 0  # not sure
                 else:
                     indent_padding(indent_of_indent_count, indent_count)
                     print('|--', a)
@@ -114,9 +114,9 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
 def indent_padding(begin_index, count):
     # need to account for parent indent level (that is the starting base)
     for i in range(begin_index):
-        print('    ', end = '')
-    for i in range(count-begin_index):
-        print('|   ', end = '')
+        print('    ', end='')
+    for i in range(count - begin_index):
+        print('|   ', end='')
 
 if __name__ == '__main__':
     # just for demo
