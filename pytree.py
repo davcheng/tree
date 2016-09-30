@@ -119,6 +119,7 @@ def get_input_dir_name(input_dir):
         (path, input_dir_name) = os.path.split(path)
     return input_dir_name
 
+
 def indent_padding(begin_index, count):
     # need to account for parent indent level (that is the starting base)
     for i in range(begin_index):
