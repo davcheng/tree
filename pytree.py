@@ -88,24 +88,24 @@ def print_files(root_name, dict, indent_count, indent_of_indent_count):
 
                 # check to see if it is the last item
                 if(a == dict[root_name][-1]):
-                    print('`--', a)
+                    print('└──', a)
                     indent_of_indent_count += 1  # not sure
                     indent_count = 0  # not sure
                 else:
                     # indent_padding(indent_of_indent_count, indent_count)
                     # indent_padding(0, 1)
-                    print('|--', a)
+                    print('├──', a)
 
             # else it's a sub-directory
             elif a in dict:
                 if(a == dict[root_name][-1]):
                     indent_padding(indent_of_indent_count, indent_count)
-                    print('`--', a)
+                    print('└──', a)
                     indent_of_indent_count += 1
                     indent_count = 0  # not sure
                 else:
                     indent_padding(indent_of_indent_count, indent_count)
-                    print('|--', a)
+                    print('├──', a)
                 count_dict['dir_count'] += 1
                 print_files(a, dict, indent_count + 1, indent_of_indent_count)
                 # for b in dict[a]:
@@ -125,7 +125,7 @@ def indent_padding(begin_index, count):
     for i in range(begin_index):
         print('    ', end='')
     for i in range(count - begin_index):
-        print('|   ', end='')
+        print('│   ', end='')
 
 if __name__ == '__main__':
     # just for demo
